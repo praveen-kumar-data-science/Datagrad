@@ -1,5 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+:root {
+	--page-bg: #f4f1eb;
+	--surface: #fffdf8;
+	--text-strong: #17324d;
+	--text-main: #243b53;
+	--text-muted: #5f6f7f;
+	--accent-strong: #17324d;
+	--accent-warm: #d7aa5c;
+}
+
+html, body {
+	height: 100%;
+	scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	background: var(--page-bg);
+	color: var(--text-main);
+	font-family: 'Manrope', sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+a {
+	color: inherit;
+}
 

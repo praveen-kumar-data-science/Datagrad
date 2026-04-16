@@ -1,200 +1,242 @@
+<section class="hero-section">
+  <div class="hero-shell">
+    <div class="hero-copy">
+      <span class="eyebrow">US career transition program</span>
+      <h1>Move from learning data tools to landing a structured data engineering career path.</h1>
+      <p class="hero-lead">
+        DataGrad combines technical training, project delivery, resume positioning, and interview prep into one guided path for candidates targeting data engineering and AI roles in the US.
+      </p>
 
-<div class="bgcolor">
-  @if(!isSmallScreen) {
-  <mat-grid-list cols="2" rowHeight="100%">
-    <mat-grid-tile colspan="1">
-      <!-- Left half content goes here -->
-      <div style="position: absolute; left: 60px;">
-        <p class="my-text">Get Your First Data Engineer/AI job in USA!</p>
-        <div class="questions-section">
-          <p>Are you:</p>
-          <ul>
-            <li>Planning to move to US and work as Big Data/AI Engineer?</li>
-            <li>Already in the USA with F1/H4 or other visa and want to get a job as Big Data/AI Engineer?</li>
-          </ul>
-          <p class="closing-text">You are in the right place. Get ready for the challenge!</p>
-        </div>
-        <button mat-raised-button routerLink="/" fragment="what-we-do" class="get-started-btn">
-          Get started <mat-icon>arrow_forward</mat-icon>
-        </button>
-      </div>
-    </mat-grid-tile>
-
-      <mat-grid-tile colspan="1">
-        <!-- Right half content goes here -->
-        <div class="right-content">
-          <app-merged-carousel></app-merged-carousel>
-        </div>
-      </mat-grid-tile>
-  </mat-grid-list>
-}
-@if(isSmallScreen) {
-  <div cols="2" rowHeight="100%">
-<div colspan="1">
-  <!-- Left half content goes here -->
-  <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: left;  overflow: hidden;">
-    <p class="my-text">Get Your First Data Engineer/AI job in USA!</p>
-    <div class="questions-section">
-      <p>Are you:</p>
-      <ul>
-        <li>Planning to move to US and work as Big Data/AI Engineer?</li>
-        <li>Already in the USA with F1/H4 or other visa and want to get a job as Big Data/AI Engineer?</li>
-      </ul>
-      <p class="closing-text">You are in the right place. Get ready for the challenge!</p>
-    </div>
-    <button mat-raised-button routerLink="/" fragment="what-we-do" class="get-started-btn">
-      Get started <mat-icon>arrow_forward</mat-icon>
-    </button>
-  </div>
-</div>
-</div>
-}
-</div>
-
-<!-- What We Do Section -->
-<div id="what-we-do" class="what-we-do-section">
-  <div class="container">
-    <h2>What we do:</h2>
-    <ul class="services-list">
-      <li>Train you for getting into Big data jobs in the US</li>
-      <li>Build real world projects to showcase to your employer</li>
-      <li>Build a US based resume</li>
-      <li>Conduct mock interviews to prepare you well for real interviews</li>
-      <li>Help you with University and degree program selection if you are not in the US along with the job prep training so you could focus on getting a job once you land US</li>
-      <li>Build your own portfolio website + Linkedin profile to maximize interview calls automatically</li>
-    </ul>
-  </div>
-</div>
-
-<!-- Curriculum Details Section -->
-<div id="curriculum-details" class="curriculum-section">
-  <div class="container">
-     <h1 class="training-main-title">TRAINING & JOB PREP</h1>
-    <div class="curriculum-flex">
-
-  <!-- LEFT: Curriculum -->
-  <div class="curriculum-section-block">
-    <h2>Curriculum details </h2>
-    <div class="curriculum-list">
-      <div *ngFor="let item of curriculumItems; let i = index" class="curriculum-item">
-        <button type="button" class="curriculum-title" (click)="toggleCurriculum(i)">
-          <span>{{ item.title }}</span>
-          <mat-icon>{{ expandedIndex === i ? 'expand_less' : 'expand_more' }}</mat-icon>
-        </button>
-        <div class="curriculum-detail" *ngIf="expandedIndex === i">
-          <p>{{ item.details }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- RIGHT: Job Preparation -->
-  <div class="curriculum-section-block">
-    <h2 class="subheading">Job Preparation</h2>
-    <div class="curriculum-list">
-      <div *ngFor="let item of jobPrepItems; let j = index" class="curriculum-item">
-        <button type="button" class="curriculum-title" (click)="toggleCurriculum(jobPrepItems.length + j)">
-          <span>{{ item.title }}</span>
-          <mat-icon>{{ expandedIndex === jobPrepItems.length + j ? 'expand_less' : 'expand_more' }}</mat-icon>
-        </button>
-        <div class="curriculum-detail" *ngIf="expandedIndex === jobPrepItems.length + j">
-          <p>{{ item.detail }}</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-  </div>
-</div>
-
-<!-- Decision Tree Section -->
-<div class="decision-tree-section">
-  <div class="tree-container">
-    <div class="tree-node tree-node-top">Where are you right now?</div>
-    <div class="tree-arrows">
-      <span class="arrow-left">↙</span>
-      <span class="arrow-right">↘</span>
-    </div>
-    <div class="tree-row tree-row-main">
-      <div class="tree-node tree-node-left">I am inside USA</div>
-      <div class="tree-node tree-node-right">I am outside USA</div>
-    </div>
-    <div class="tree-row tree-row-branches">
-      <div class="tree-node branch-node branch-left">
-        <div class="option-title">Great, so you either have a F1 / H1 / H4 or other visa</div>
-        <ul class="option-sublist">
-          <li>Start your <a href="#curriculum-details" class="highlight-training">TRAINING & JOB PREP</a> right away</li>
+      <div class="hero-audience">
+        <p>Built for professionals who are:</p>
+        <ul>
+          <li>Planning to move to the US and build a career in data engineering or AI.</li>
+          <li>Already in the US on F1, H4, H1, or another visa and ready to break into the market.</li>
         </ul>
       </div>
-      <div class="branch-right-block">
-        <div class="tree-node branch-node branch-right">You need to move to the US first</div>
-        <div class="tree-row tree-row-branch-options">
-          <div class="tree-node option-node">
-            <div class="option-title">Study in the US (Get F1 Visa)</div>
-            <ul class="option-sublist">
-              <li>University and degree program selection</li>
-              <li>Application to US Univs</li>
-              <li><a href="#curriculum-details" class="highlight-training">TRAINING & JOB PREP</a> even before landing in the US</li>
-            </ul>
+
+      <div class="hero-actions">
+        <a mat-flat-button routerLink="/" fragment="what-we-do" class="primary-button">
+          Explore the Program
+        </a>
+        <a mat-stroked-button routerLink="/" fragment="contact" class="secondary-button">
+          Talk to Us
+        </a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="metric-card">
+          <span class="metric-value">6+</span>
+          <span class="metric-label">training modules</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">1:1</span>
+          <span class="metric-label">resume and interview coaching</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-value">End-to-end</span>
+          <span class="metric-label">career and visa guidance</span>
+        </div>
+      </div>
+    </div>
+
+    @if(!isSmallScreen) {
+      <div class="hero-media">
+        <div class="media-frame">
+          <div class="media-intro">
+            <span class="media-kicker">Program snapshot</span>
+            <h2>Projects, positioning, and job readiness in one place.</h2>
           </div>
-          <div class="tree-node option-node">
-            <div class="option-title">Move to US via spouse H4 or L visa</div>
-            <ul class="option-sublist">
-              <li>Get your visa - Strategies for cracking visa interview</li>
-              <li><a href="#curriculum-details" class="highlight-training">TRAINING & JOB PREP</a> to prepare you even before landing in the US</li>
-            </ul>
-          </div>
-          <div class="tree-node option-node">
-            <div class="option-title">Move to US via H1B or L1 visa</div>
-            <ul class="option-sublist">
-              <li>Get your visa - Strategies for cracking visa interview</li>
-              <li><a href="#curriculum-details" class="highlight-training">TRAINING & JOB PREP</a> to prepare you even before landing in the US</li>
+          <app-merged-carousel></app-merged-carousel>
+        </div>
+      </div>
+    }
+  </div>
+</section>
+
+<section id="what-we-do" class="section-block services-section">
+  <div class="section-heading">
+    <span class="eyebrow">What we do</span>
+    <h2>A structured system instead of disconnected prep work.</h2>
+    <p>
+      The program is designed to reduce uncertainty. You build skills, proof of work, and a job-search narrative at the same time.
+    </p>
+  </div>
+
+  <div class="services-grid">
+    <article class="service-card">
+      <h3>Technical training</h3>
+      <p>Train for Big Data, Python, Spark, Databricks, and AI fundamentals with a market-aligned sequence.</p>
+    </article>
+    <article class="service-card">
+      <h3>Portfolio proof</h3>
+      <p>Build real-world projects and a portfolio presence that show employers how you solve practical problems.</p>
+    </article>
+    <article class="service-card">
+      <h3>Career positioning</h3>
+      <p>Create a US-focused resume, strengthen your LinkedIn profile, and present your experience with clarity.</p>
+    </article>
+    <article class="service-card">
+      <h3>Interview preparation</h3>
+      <p>Practice mock interviews, technical questioning patterns, and communication under realistic conditions.</p>
+    </article>
+    <article class="service-card">
+      <h3>University guidance</h3>
+      <p>Get support with degree-program selection and planning if your route to the US includes study options.</p>
+    </article>
+    <article class="service-card">
+      <h3>Job search execution</h3>
+      <p>Use networking tactics, recruiter outreach improvements, and job board strategy to increase response rates.</p>
+    </article>
+  </div>
+</section>
+
+<section id="curriculum-details" class="section-block curriculum-section">
+  <div class="section-heading split-heading">
+    <div>
+      <span class="eyebrow">Training and job prep</span>
+      <h2>A clear curriculum with practical job-market support.</h2>
+    </div>
+    <p>
+      Technical depth matters, but so does packaging your experience for recruiters and hiring managers. This program covers both.
+    </p>
+  </div>
+
+  <div class="curriculum-layout">
+    <section class="content-panel">
+      <div class="panel-header">
+        <h3>Curriculum details</h3>
+        <p>Progress through the technical modules in a sequence that builds applied confidence.</p>
+      </div>
+      <div class="curriculum-list">
+        <div *ngFor="let item of curriculumItems; let i = index" class="curriculum-item">
+          <button type="button" class="curriculum-title" (click)="toggleCurriculum(i)">
+            <span>{{ item.title }}</span>
+            <mat-icon>{{ expandedIndex === i ? 'remove' : 'add' }}</mat-icon>
+          </button>
+          <div class="curriculum-detail" *ngIf="expandedIndex === i">
+            <ul class="detail-list">
+              <li *ngFor="let detail of item.details">{{ detail }}</li>
             </ul>
           </div>
         </div>
       </div>
-    </div>
+    </section>
+
+    <section class="content-panel">
+      <div class="panel-header">
+        <h3>Job preparation</h3>
+        <p>Positioning support to help your training convert into interviews and stronger conversations.</p>
+      </div>
+      <div class="curriculum-list">
+        <div *ngFor="let item of jobPrepItems; let j = index" class="curriculum-item">
+          <button type="button" class="curriculum-title" (click)="toggleCurriculum(jobPrepItems.length + j)">
+            <span>{{ item.title }}</span>
+            <mat-icon>{{ expandedIndex === jobPrepItems.length + j ? 'remove' : 'add' }}</mat-icon>
+          </button>
+          <div class="curriculum-detail" *ngIf="expandedIndex === jobPrepItems.length + j">
+            <p>{{ item.detail }}</p>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
-</div>
+</section>
 
-<!-- Contact Section -->
-<div id="contact" class="contact-container">
-  <h1>Contact Us</h1>
-  <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+<section class="section-block path-section">
+  <div class="section-heading">
+    <span class="eyebrow">Pathways</span>
+    <h2>Choose the route that matches where you are today.</h2>
+    <p>The support model changes depending on your immigration and career stage, but the end goal stays the same: job readiness.</p>
+  </div>
 
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name" required>
-      <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
-        Name is required
-      </mat-error>
-    </mat-form-field>
+  <div class="path-grid">
+    <article class="path-card featured-path">
+      <span class="path-label">Inside the US</span>
+      <h3>Start directly with training and job preparation.</h3>
+      <p>If you are already in the US with F1, H1, H4, or another visa, the focus shifts immediately to technical preparation and interview readiness.</p>
+      <a routerLink="/" fragment="curriculum-details">See the curriculum</a>
+    </article>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" type="email" required>
-      <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
-        Email is required
-      </mat-error>
-      <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
-        Please enter a valid email address
-      </mat-error>
-    </mat-form-field>
+    <article class="path-card">
+      <span class="path-label">Outside the US</span>
+      <h3>Plan your move without delaying career preparation.</h3>
+      <ul class="path-list">
+        <li>Study in the US with support on university and degree-program selection.</li>
+        <li>Prepare for spouse-based or employer-based visa pathways.</li>
+        <li>Begin training and job prep before landing in the US when possible.</li>
+      </ul>
+    </article>
+  </div>
+  <div class="path-options">
+    <article class="option-card">
+      <h4>F1 study route</h4>
+      <p>University selection, applications, and early technical preparation aligned to your career target.</p>
+    </article>
+    <article class="option-card">
+      <h4>H4 or L visa route</h4>
+      <p>Visa interview strategy and a practical training plan so you arrive with momentum.</p>
+    </article>
+    <article class="option-card">
+      <h4>H1B or L1 route</h4>
+      <p>Career transition support focused on adapting your experience to US employer expectations.</p>
+    </article>
+  </div>
+</section>
 
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Message</mat-label>
-      <textarea matInput formControlName="message" rows="5" required></textarea>
-      <mat-error *ngIf="contactForm.get('message')?.hasError('required')">
-        Message is required
-      </mat-error>
-    </mat-form-field>
+<section id="contact" class="section-block contact-section">
+  <div class="contact-layout">
+    <div class="contact-copy">
+      <span class="eyebrow">Contact</span>
+      <h2>Discuss your current situation and the best starting point.</h2>
+      <p>
+        Whether you need technical training, job-search structure, or guidance on moving to the US, send a note and outline where you are right now.
+      </p>
+      <div class="contact-notes">
+        <div>
+          <strong>Best for:</strong>
+          <span>career changers, international students, and professionals targeting data engineering roles.</span>
+        </div>
+        <div>
+          <strong>Include:</strong>
+          <span>your visa status, location, and the kind of role you want to reach.</span>
+        </div>
+      </div>
+    </div>
 
-    <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">
-      Send Message
-    </button>
-  </form>
-</div>
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+        <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" required>
+        <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+        <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>Message</mat-label>
+        <textarea matInput formControlName="message" rows="5" required></textarea>
+        <mat-error *ngIf="contactForm.get('message')?.hasError('required')">
+          Message is required
+        </mat-error>
+      </mat-form-field>
+
+      <button mat-flat-button type="submit" class="primary-button submit-button" [disabled]="!contactForm.valid">
+        Send Message
+      </button>
+    </form>
+  </div>
+</section>
 
 

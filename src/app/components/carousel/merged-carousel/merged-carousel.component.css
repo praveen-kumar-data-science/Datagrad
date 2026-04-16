@@ -1,19 +1,30 @@
+.carousel-shell {
+  position: relative;
+  min-height: 540px;
+  width: 100%;
+}
+
 .leftsidecarousel,
 .rightsidecarousel {
   position: absolute;
-  height: 95.1vh; /*  viewport height */
-  width: 20vw; /*  viewport width */
+  top: 0;
+  bottom: 0;
+  width: clamp(180px, 34%, 260px);
   overflow: hidden;
 }
 
 .leftsidecarousel {
-  left: 1%;
-  /* top: 10%; */
+  left: 2%;
 }
 
 .rightsidecarousel {
-  right: 15%;
-  /* top: 10%; */
+  right: 2%;
+}
+
+@media (max-width: 1100px) {
+  .carousel-shell {
+    min-height: 460px;
+  }
 }
 
 
