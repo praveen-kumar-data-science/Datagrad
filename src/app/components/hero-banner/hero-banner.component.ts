@@ -153,7 +153,7 @@ export class HeroBannerComponent {
           alert('Thank you! Your message has been sent successfully. We will get back to you soon.');
           this.contactForm.reset();
         })
-        .catch((error) => {
+        .catch((error: unknown) => {
           console.error('Email send failed:', error);
           alert('Sorry, there was an error sending your message. Please try again.');
         });
