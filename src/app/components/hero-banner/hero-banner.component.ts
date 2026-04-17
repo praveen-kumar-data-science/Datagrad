@@ -32,6 +32,7 @@ import emailjs from '@emailjs/browser';
 export class HeroBannerComponent {
   isSmallScreen = false;
   contactForm: FormGroup;
+  private emailJsInitialized = false;
 
   constructor(private breakpointObserver: BreakpointObserver, private fb: FormBuilder) {
     this.contactForm = this.fb.group({
@@ -136,11 +137,21 @@ export class HeroBannerComponent {
       .subscribe(result => {
         this.isSmallScreen = result.matches;
       });
-    emailjs.init('U5uIYArDWBCqC7Av0');
   }
 
   onSubmit() {
     if (this.contactForm.valid) {
+      if (!this.emailJsInitialized) {
+        try {
+          emailjs.init('U5uIYArDWBCqC7Av0');
+          this.emailJsInitialized = true;
+        } catch (error: unknown) {
+          console.error('EmailJS init failed:', error);
+          alert('Contact form is temporarily unavailable. Please email datagradai@gmail.com directly.');
+          return;
+        }
+      }
+
       const formData = this.contactForm.value;
       const emailParams = {
         from_name: formData.name,
