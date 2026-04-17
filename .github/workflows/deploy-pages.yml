@@ -32,7 +32,7 @@ jobs:
         run: npm ci
 
       - name: Build static site
-        run: npx ng build --configuration production --base-href "/DataGrad/" --deploy-url "/DataGrad/" --ssr=false --prerender=false
+        run: npx ng build --configuration production --base-href "/DataGrad/" --ssr=false --prerender=false
 
       - name: Add SPA fallback
         run: cp dist/datagrad-web/browser/index.html dist/datagrad-web/browser/404.html
