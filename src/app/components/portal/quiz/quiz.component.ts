@@ -61,6 +61,7 @@ export class QuizComponent implements OnInit {
     this.questions = this.buildQuestionBank(this.totalQuestions);
     this.attemptsState = this.createDefaultAttemptState();
     this.restoreProgress();
+    this.saveLastQuizViewed();
   }
 
   get solvedCount(): number {
@@ -177,6 +178,20 @@ export class QuizComponent implements OnInit {
     }
 
     return '';
+  }
+
+  resetQuiz(): void {
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser) {
+      return;
+    }
+
+    if (!confirm('Are you sure you want to reset this quiz? All progress will be lost.')) {
+      return;
+    }
+
+    localStorage.removeItem(this.storageKey(currentUser));
+    this.attemptsState = this.createDefaultAttemptState();
   }
 
   private buildQuestionBank(count: number): QuizQuestion[] {
@@ -393,5 +408,20 @@ export class QuizComponent implements OnInit {
 
   private storageKey(userEmail: string): string {
     return `datagrad-quiz-progress-${userEmail}-${this.sectionId}-${this.topicSlug}`;
+  }
+
+  private saveLastQuizViewed(): void {
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser) {
+      return;
+    }
+
+    const lastQuizKey = `datagrad-last-quiz-${currentUser}`;
+    localStorage.setItem(lastQuizKey, JSON.stringify({
+      sectionId: this.sectionId,
+      topicSlug: this.topicSlug,
+      topic: this.focusTopic,
+      timestamp: new Date().toISOString()
+    }));
   }
 }

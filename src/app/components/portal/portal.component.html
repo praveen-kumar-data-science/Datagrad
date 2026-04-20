@@ -67,6 +67,18 @@
           </div>
         </div>
       </section>
+
+      @if(lastQuiz) {
+      <section class="dashboard-card dashboard-card-tertiary">
+        <span class="section-kicker">Resume practice</span>
+        <h2>Continue your last quiz</h2>
+        <p>{{ lastQuiz.topic }} - {{ lastQuiz.sectionId | titlecase }} Module</p>
+
+        <button mat-flat-button type="button" class="portal-logout" (click)="resumeLastQuiz()">
+          Resume quiz
+        </button>
+      </section>
+      }
     </div>
 
     <div class="portal-layout">

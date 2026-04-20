@@ -216,6 +216,27 @@ export class PortalComponent implements OnInit {
     return localStorage.getItem(this.lastViewedStorageKey(currentUser));
   }
 
+  get lastQuiz(): { sectionId: string; topicSlug: string; topic: string } | null {
+    const currentUser = this.currentUser;
+
+    if (!currentUser) {
+      return null;
+    }
+
+    const lastQuizKey = `datagrad-last-quiz-${currentUser}`;
+    const stored = localStorage.getItem(lastQuizKey);
+
+    if (!stored) {
+      return null;
+    }
+
+    try {
+      return JSON.parse(stored);
+    } catch {
+      return null;
+    }
+  }
+
   get selectedSection(): PortalSection {
     return this.trainingSections.find(section => section.id === this.selectedSectionId) ?? this.trainingSections[0];
   }
@@ -271,6 +292,18 @@ export class PortalComponent implements OnInit {
 
     const firstSection = this.trainingSections[0];
     this.selectLesson(firstSection.id, firstSection.lessons[0].title);
+  }
+
+  resumeLastQuiz(): void {
+    const lastQuiz = this.lastQuiz;
+
+    if (!lastQuiz) {
+      return;
+    }
+
+    this.router.navigate(['/portal/quiz', lastQuiz.sectionId, lastQuiz.topicSlug], {
+      queryParams: { topic: lastQuiz.topic }
+    });
   }
 
   toggleLessonCompletion(sectionId: string, lessonTitle: string): void {
