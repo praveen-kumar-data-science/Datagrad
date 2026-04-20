@@ -319,6 +319,16 @@
   padding-left: 18px;
 }
 
+.topic-link {
+  color: var(--accent-strong);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.topic-link:hover {
+  text-decoration: underline;
+}
+
 .portal-actions a,
 .portal-logout {
   min-height: 46px;

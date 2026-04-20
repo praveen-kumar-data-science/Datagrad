@@ -1,0 +1,112 @@
+<section class="quiz-page">
+  <div class="quiz-shell">
+    <div class="quiz-header-card">
+      <div>
+        <span class="quiz-eyebrow">Interview MCQ Practice</span>
+        <h1>{{ sectionLabel }} - {{ focusTopic }}</h1>
+        <p>
+          40 mixed questions (single and multiple choice) with basic, complex, and US interview-style prompts for 3-5 years data engineering roles.
+        </p>
+      </div>
+
+      <div class="quiz-actions">
+        <a mat-stroked-button routerLink="/portal">Back to training portal</a>
+      </div>
+    </div>
+
+    <div class="quiz-summary-card">
+      <div class="summary-item">
+        <span>Progress</span>
+        <strong>{{ solvedCount }}/{{ totalQuestions }}</strong>
+      </div>
+      <div class="summary-item">
+        <span>Right</span>
+        <strong>{{ correctCount }}</strong>
+      </div>
+      <div class="summary-item">
+        <span>Wrong</span>
+        <strong>{{ wrongCount }}</strong>
+      </div>
+      <div class="summary-item">
+        <span>Score</span>
+        <strong>{{ progressPercent }}%</strong>
+      </div>
+
+      <div class="progress-bar-shell">
+        <div class="progress-bar-fill" [style.width.%]="progressPercent"></div>
+      </div>
+    </div>
+
+    <div class="question-list">
+      <article class="question-card" *ngFor="let question of questions; let idx = index">
+        <div class="question-top">
+          <span class="question-number">Q{{ idx + 1 }}</span>
+          <span class="question-meta">{{ question.topic }} | {{ question.difficulty }} | {{ question.type === 'single' ? 'Single choice' : 'Multiple choice' }}</span>
+        </div>
+
+        <h2>{{ question.question }}</h2>
+
+        <div class="option-list">
+          <label class="option-item" *ngFor="let option of question.options; let optionIndex = index">
+            <input
+              *ngIf="question.type === 'single'"
+              type="radio"
+              [name]="question.id"
+              [checked]="isSelected(question.id, optionIndex)"
+              [disabled]="attemptsState[question.id].locked"
+              (change)="selectSingle(question.id, optionIndex)">
+
+            <input
+              *ngIf="question.type === 'multiple'"
+              type="checkbox"
+              [checked]="isSelected(question.id, optionIndex)"
+              [disabled]="attemptsState[question.id].locked"
+              (change)="toggleMultiple(question.id, optionIndex)">
+
+            <span>{{ option }}</span>
+          </label>
+        </div>
+
+        <div class="question-actions">
+          <button
+            mat-flat-button
+            type="button"
+            class="submit-answer"
+            [disabled]="attemptsState[question.id].locked || attemptsState[question.id].selectedAnswers.length === 0"
+            (click)="submitAnswer(question)">
+            Submit answer
+          </button>
+
+          <span
+            class="question-status"
+            [class.correct]="attemptsState[question.id].status === 'correct'"
+            [class.incorrect]="attemptsState[question.id].status === 'incorrect'">
+            {{ statusText(question.id) }}
+          </span>
+
+          <span class="question-score" *ngIf="attemptsState[question.id].status === 'correct'">
+            {{ correctCount }}/{{ totalQuestions }} right
+          </span>
+        </div>
+      </article>
+    </div>
+
+    <div class="analysis-grid">
+      <section class="analysis-card">
+        <h3>Strong Topics</h3>
+        <ul>
+          <li *ngFor="let topic of strengths">{{ topic.topic }} - {{ topic.accuracy }}% first-attempt accuracy</li>
+          <li *ngIf="strengths.length === 0">No strong topics yet. Submit more questions.</li>
+        </ul>
+      </section>
+
+      <section class="analysis-card">
+        <h3>Weak Topics</h3>
+        <ul>
+          <li *ngFor="let topic of weaknesses">{{ topic.topic }} - {{ topic.accuracy }}% first-attempt accuracy</li>
+          <li *ngIf="weaknesses.length === 0">No weak topics identified yet.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</section>

@@ -126,7 +126,14 @@
               </div>
 
               <ul>
-                <li *ngFor="let topic of lesson.topics">{{ topic }}</li>
+                <li *ngFor="let topic of lesson.topics">
+                  <a
+                    class="topic-link"
+                    [routerLink]="topicQuizLink(selectedSection.id, topic)"
+                    [queryParams]="{ topic: formatTopicLabel(topic) }">
+                    {{ formatTopicLabel(topic) }}
+                  </a>
+                </li>
               </ul>
             </div>
           </article>

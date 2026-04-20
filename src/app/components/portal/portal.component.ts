@@ -237,6 +237,30 @@ export class PortalComponent implements OnInit {
     this.persistLastViewedLesson();
   }
 
+  topicQuizLink(sectionId: string, topic: string): string[] {
+    return ['/portal/quiz', sectionId, this.topicSlug(topic)];
+  }
+
+  formatTopicLabel(topic: string): string {
+    return topic
+      .split(' ')
+      .filter(Boolean)
+      .map(part => {
+        if (/^[a-z]{1,4}$/.test(part) && part.toLowerCase() !== 'into') {
+          return part.toUpperCase();
+        }
+
+        return part.charAt(0).toUpperCase() + part.slice(1).toLowerCase();
+      })
+      .join(' ')
+      .replace('Cte', 'CTE')
+      .replace('Aqe', 'AQE')
+      .replace('Dlt', 'DLT')
+      .replace('Rag', 'RAG')
+      .replace('Nlp', 'NLP')
+      .replace('Us', 'US');
+  }
+
   continueFromLastLesson(): void {
     const lastLessonId = this.lastViewedLessonId;
 
@@ -350,6 +374,10 @@ export class PortalComponent implements OnInit {
 
   private lessonId(sectionId: string, lessonTitle: string): string {
     return `${sectionId}::${lessonTitle.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  }
+
+  private topicSlug(topic: string): string {
+    return topic.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   }
 
   private toPercent(value: number, total: number): number {

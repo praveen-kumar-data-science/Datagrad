@@ -4,6 +4,7 @@ import { HeroBannerComponent } from './components/hero-banner/hero-banner.compon
 import { LoginComponent } from './components/auth/login/login.component';
 import { PortalComponent } from './components/portal/portal.component';
 import { authGuard } from './guards/auth.guard';
+import { QuizComponent } from './components/portal/quiz/quiz.component';
 const routes: Routes = [
   {
     path:'',component:HeroBannerComponent
@@ -15,6 +16,11 @@ const routes: Routes = [
   {
     path: 'portal',
     component: PortalComponent,
+    canActivate: [authGuard]
+  },
+  {
+    path: 'portal/quiz/:sectionId/:topicSlug',
+    component: QuizComponent,
     canActivate: [authGuard]
   }
 ];
